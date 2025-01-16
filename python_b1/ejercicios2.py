@@ -1,6 +1,9 @@
-fibonnacci = [0, 1]
-while(len(fibonnacci) < 10):
-   num1 = fibonnacci[len(fibonnacci) - 1]
-   num2 = fibonnacci[len(fibonnacci) - 2]
-   fibonnacci.append(num1 + num2) 
-print(fibonnacci)
+suma = 0
+numeros = 0
+num = 0
+while(num != -1):
+   num = int(input('Dame numeros(- 1 para finalizar): '))
+   if (num != -1):
+      suma = suma + num
+      numeros += 1
+print(suma/numeros)
