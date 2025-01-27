@@ -1,0 +1,5 @@
+archivo = open("ejercicios5/datos.txt")
+contenido = archivo.read()
+palabras = contenido.split()
+print(str(len(palabras)))
+archivo.close()
