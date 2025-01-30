@@ -1,11 +1,13 @@
 archivo = open("ejercicios5/datos.csv")
-contenido = archivo.readlines()
+contenido = [linea.strip() for linea in archivo.readlines()]
 archivo.close()
+
 datos = []
 claves = contenido[0].split(",")
 
-for fila in contenido[1::]:
-    diccionario = dict(zip(claves, fila))
+for fila in range(1, len(contenido)):
+    valores = contenido[fila].split(",")
+    diccionario = dict(zip(claves, valores))
     datos.append(diccionario)
 
 print(datos)
