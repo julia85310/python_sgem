@@ -1,0 +1,10 @@
+Producto: Café, Cantidad: 2, Precio: 2.50
+Producto: Té, Cantidad: 3, Precio: 1.80
+Producto: Café, Cantidad: 4, Precio: 2.50
+Producto: Galletas, Cantidad: 5, Precio: 3.20
+Producto: Jugo, Cantidad: 2, Precio: 2.00
+Producto: Café, Cantidad: 3, Precio: 2.50
+Producto: Té, Cantidad: 1, Precio: 1.80
+Producto: Galletas, Cantidad: 2, Precio: 3.20
+Producto: Jugo, Cantidad: 4, Precio: 2.00
+Producto: Café, Cantidad: 3, Precio: 2.50

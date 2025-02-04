@@ -1,0 +1,4 @@
+Producto: Café, Total Vendido: 12
+Producto: Té, Total Vendido: 4
+Producto: Galletas, Total Vendido: 7
+Producto: Jugo, Total Vendido: 6

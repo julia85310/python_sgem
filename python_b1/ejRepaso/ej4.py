@@ -17,7 +17,7 @@ def totalIngresos():
         ventas = json.load(fichero)
     for producto, venta in ventas.items():
         ingresos += venta["precio"] * venta["cantidad"]
-    return ingresos
+    return round(ingresos, 2)
 
 '''
 devolucion = {"nombre": cantidadRestada}
@@ -41,12 +41,21 @@ def actualizarInventario(devolucion):
 guardarDatos()
 entrada = ""
 while(entrada != "3"):
-    entrada = input("1. Total de ingresos\n2.Realizar devolución\n3.Salir")
+    entrada = input("1. Total de ingresos\n2. Realizar devolución\n3. Salir\n")
     if (entrada == "1"):
         print(f"Total de ingresos: {totalIngresos()}")
     elif(entrada == "2"):
         nombreProducto = input("Nombre del producto: ")
         try:
             cantidadDevuelta = int(input("Cantidad devuelta: "))
+            if cantidadDevuelta <= 0:
+                raise ValueError()    
+            actualizarInventario({nombreProducto: cantidadDevuelta})
+        except:
+            print("ERROR: Entero positivo requerido como cantidad devuelta")
+    else:
+        if(entrada != "3"):
+            print("Selecciona una opción válida")
+
 
         
