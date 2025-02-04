@@ -18,3 +18,35 @@ def totalIngresos():
     for producto, venta in ventas.items():
         ingresos += venta["precio"] * venta["cantidad"]
     return ingresos
+
+'''
+devolucion = {"nombre": cantidadRestada}
+'''
+def actualizarInventario(devolucion):
+    with open(rutaFichero) as fichero:
+        inventario = json.load(fichero)
+    for producto, cantidadDevuelta in devolucion.items():
+        if producto in inventario:
+            if cantidadDevuelta > inventario[producto]["cantidad"]:
+                print("ERROR: Ventas insuficientes")
+                return
+            inventario[producto]["cantidad"] -= cantidadDevuelta
+            print("Devolución realizada")
+        else:
+            print("ERROR: Producto no encontrado")
+            
+    with open(rutaFichero, "w") as fichero:
+        json.dump(inventario, fichero)
+
+guardarDatos()
+entrada = ""
+while(entrada != "3"):
+    entrada = input("1. Total de ingresos\n2.Realizar devolución\n3.Salir")
+    if (entrada == "1"):
+        print(f"Total de ingresos: {totalIngresos()}")
+    elif(entrada == "2"):
+        nombreProducto = input("Nombre del producto: ")
+        try:
+            cantidadDevuelta = int(input("Cantidad devuelta: "))
+
+        

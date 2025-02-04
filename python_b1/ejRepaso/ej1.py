@@ -14,7 +14,7 @@ def function(texto):
             if apariciones > mayorContador:
                 mayorContador = apariciones
             recuentoPalabras.update({palabra: apariciones})
-    for i in range(1, mayorContador + 1):
+    for i in range(mayorContador, 0, -1):
         for palabra, apariciones in recuentoPalabras.items():
             if (apariciones == i):
                 recuentoPalabrasOrdenado.update({palabra: apariciones})
