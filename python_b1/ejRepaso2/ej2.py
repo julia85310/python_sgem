@@ -1,55 +1,69 @@
-banco = {}
-
-def updateSaldo(user, cantidad):
-    if (user in banco):
-        if (cantidad < 0 and cantidad > banco[user]):
+banco = {"Juan": 300, "Lola": 10, "José": 50}
+userNow = ""
+def updateSaldo(cantidad):
+    global banco
+    if (userNow in banco):
+        if (cantidad < 0 and cantidad > banco[userNow]):
             print("Fondos insuficientes")
-        banco[user] = banco[user] + cantidad
+        banco[userNow] = banco[userNow] + cantidad
     else:
         print("Usuario no encontrado")
 
 def depositar():
-    user = input("Introduce el usuario: ")
     try:
         cantidad = int(input("Introduce la cantidad a depositar: "))
-        updateSaldo(user, cantidad)
+        updateSaldo(cantidad)
         print("Operación realizada")
     except Exception:
         print("Cantidad inválida")
 
 def retirar():
-    user = input("Introduce el usuario: ")
     try:
         cantidad = int(input("Introduce la cantidad a retirar: "))
-        updateSaldo(user, -cantidad)
+        updateSaldo(-cantidad)
         print("Operación realizada")
     except Exception:
         print("Cantidad inválida")
     
 def consultarSaldo():
-    user = input("Introduce el usuario: ")
-    if (user in banco):
-        print(f"Fondos: {banco[user]}")
+    if (userNow in banco):
+        print(f"Fondos: {banco[userNow]}")
     else:
         print("Usuario no encontrado")
 
-
+def login():
+    global userNow
+    user = input("Introduce el usuario: ")
+    if (user not in banco):
+        print("Usuario no encontrado")
+    else:
+        userNow = user
+        
 def main():
-    opcion = ""
-    while (opcion != "4"):
-        print("1. Consultar fondos")
-        print("2. Depositar")
-        print("3. Retirar")
-        print("4. Salir\n")
-        opcion = input("Opción: ")
-        if (opcion == "1" ):
-            consultarSaldo()
-        elif (opcion == "2"):
-            depositar()
-        elif (opcion == "3"):
-            retirar()
-        elif (opcion == "4"):
-            pass
-        else:
-            print("Selecciona una opción válida")
+    global userNow
+    salir = ""
+    while(salir != "y"):
+        login()
+        if (userNow != ""):
+            opcion = ""
+            while (opcion != "4"):
+                print("1. Consultar fondos")
+                print("2. Depositar")
+                print("3. Retirar")
+                print("4. Cerrar Sesión\n")
+                opcion = input("Opción: ")
+                if (opcion == "1" ):
+                    consultarSaldo()
+                elif (opcion == "2"):
+                    depositar()
+                elif (opcion == "3"):
+                    retirar()
+                elif (opcion == "4"):
+                    userNow = ""
+                else:
+                    print("Selecciona una opción válida")
+        userNow = ""
+        salir = input("¿Deseas salir?y/n: ")
+                
+    
 main()
